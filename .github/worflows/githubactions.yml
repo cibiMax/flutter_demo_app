@@ -1,0 +1,32 @@
+  name: Build and Deploy App
+  on:
+    push:
+      branches:
+      - main
+  jobs:
+    build_app:
+      runs-on: windows-latest
+      steps:
+        - name: flutter-setup
+          uses: subositio/flutter-action@latest
+          with: 
+            flutter-version: 3.16.4
+            channel: stable
+            cache: true
+        - name: checkout code
+          uses: actions/checkout@latest       
+        - name: run flutter tests
+          run: flutter test
+        - name: flutter install dependencies
+          run: flutter pub get
+        - name: build flutter app with release
+          run: flutter build apk --release
+        - name: deploy the app to firebase app distribution
+          uses: w9jds/firebase-action@latest
+          with: 
+            args: appdistribution:distribute build/app/outputs/flutter-apk/app-release.apk \
+                  --app com.example.demo_app \
+                  --groups "testers" \
+                  --token ${{secrets.FIREBASE_SERVICE_ACCOUNT}}
+              
+
