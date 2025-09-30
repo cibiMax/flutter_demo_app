@@ -23,10 +23,12 @@
       - name: Install Firebase tools for windows
         run: npm i -g firebase-tools
       - name: Deploy to firebase app distribution
-        uses: w9jds/firebase-action@master
+        uses: wzieba/Firebase-Distribution-Github-Action@v1 
         with:
-          args: appdistribution:distribute build/app/outputs/apk/release/app-release.apk \
-                --app com.example.demo_app \
-                --groups "testers" \
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN}}  
+          appId: com.example.demo_app
+          token: ${{ secrets.FIREBASE_TOKEN }}
+          serviceCredentialsFileContent: ${{ secrets.FIREBASE_ACCOUNT }}
+          groups: testers # The Firebase App Distribution group(s) to send the build to
+          file: build/app/outputs/flutter-apk/app-release.apk # Path to your built APK/IPA
+          releaseNotes: "New release from GitHub Actions" # Optional release notes
+            
