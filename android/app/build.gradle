@@ -19,13 +19,13 @@ def flutterVersionName = localProperties.getProperty('flutter.versionName') ?: '
 
 android {
     namespace "com.example.demo_app"
-    compileSdk 35
+    compileSdk 34
     ndkVersion flutter.ndkVersion
 
     defaultConfig {
         applicationId "com.example.demo_app"
         minSdk 21
-        targetSdk 35
+        targetSdk 34
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
@@ -66,6 +66,5 @@ dependencies {
 
     // Add other Firebase SDKs as needed
 }
-
 // Apply Google Services plugin at the bottom
 apply plugin: 'com.google.gms.google-services'
