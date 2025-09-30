@@ -13,7 +13,7 @@
           flutter-version: 3.16.4
           channel: stable
           cache: true
-        uses: subosito/flutter-action@master
+        uses: subosito/flutter-action@v2
       - name: Checkout Branch
         uses: actions/checkout@master
       - name: Install Flutter Dependencies
@@ -21,9 +21,9 @@
       - name: Build APK (Release)
         run: flutter build apk --release
       - name: Deploy to firebase app distribution
-        uses: w9dj/firebase-action@master
+        uses: w9jds/firebase-action@master
         with:
           args: appdistribution:distribute build/app/outputs/apk/release/app-release.apk \
                 --app com.example.demo_app \
                 --groups "testers"
-                --token ${{ secrets.FIREBASE_SERVICE_ACCOIUNT}}   
+                --token ${{ secrets.FIREBASE_SERVICE_ACCOUNT}}   
