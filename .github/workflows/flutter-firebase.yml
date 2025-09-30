@@ -27,7 +27,7 @@
         with:
           appId: com.example.demo_app
           token: ${{ secrets.FIREBASE_TOKEN }}
-          serviceCredentialsFileContent: ${{ secrets.FIREBASE_ACCOUNT }}
+          serviceCredentialsFileContent: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           groups: testers # The Firebase App Distribution group(s) to send the build to
           file: build/app/outputs/flutter-apk/app-release.apk # Path to your built APK/IPA
           releaseNotes: "New release from GitHub Actions" # Optional release notes
