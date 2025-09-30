@@ -2,7 +2,6 @@ plugins {
     id "com.android.application"
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
-    id "com.google.gms.google-services" 
 }
 
 def localProperties = new Properties()
@@ -65,4 +64,11 @@ flutter {
     source '../..'
 }
 
-dependencies {}
+dependencies {
+    // Firebase SDKs via BOM
+    implementation platform('com.google.firebase:firebase-bom:34.3.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    // Add more Firebase SDKs as needed
+}
+// Apply Google Services plugin at the bottom
+apply plugin: 'com.google.gms.google-services'
