@@ -13,7 +13,7 @@
           flutter-version: 3.16.4
           channel: stable
           cache: true
-        uses: actions/flutter-action@master
+        uses: subosito/flutter-action@master
       - name: Checkout Branch
         uses: actions/checkout@master
       - name: Install Flutter Dependencies
