@@ -23,9 +23,8 @@
       - name: Install Firebase tools for windows
         run: npm i -g firebase-tools@latest
       - name: Deploy to firebase app distribution
-        uses: w9jds/firebase-action@master
-        with:
-          args: appdistribution:distribute build/app/outputs/apk/release/app-release.apk \
-                --app com.example.demo_app \
-                --groups "testers"
-                --token ${{ secrets.FIREBASE_SERVICE_ACCOUNT}}   
+        run: |
+          firebase appdistribution:distribute build/app/outputs/apk/release/app-release.apk \
+            --app com.example.demo_app \
+            --groups "testers"
+            --token ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}   
