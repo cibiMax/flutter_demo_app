@@ -24,4 +24,4 @@
         run: npm i -g firebase-tools@latest
       - name: Deploy to firebase app distribution
         run: |
-          firebase appdistribution:distribute build/app/outputs/apk/release/app-release.apk --app com.example.demo_app --groups "testers" --token ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}   
+          firebase appdistribution:distribute build/app/outputs/flutter-apk/app-release.apk --app com.example.demo_app --groups "testers" --token ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}   
