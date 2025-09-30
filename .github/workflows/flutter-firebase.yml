@@ -22,6 +22,8 @@
         run: flutter build apk --release
       - name: Install Firebase tools for windows
         run: npm i -g firebase-tools@latest
-      - name: Deploy to firebase app distribution
-        run: |
-          firebase appdistribution:distribute build/app/outputs/flutter-apk/app-release.apk --app com.example.demo_app --groups "testers" --token ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}   
+      - name: Deploy APK (Windows)
+        shell: pwsh
+        run: cmd.exe /c "firebase appdistribution:distribute build/app/outputs/apk/release/app-release.apk --app com.example.demo_app --groups testers --token $env:FIREBASE_SERVICE_ACCOUNT"
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
